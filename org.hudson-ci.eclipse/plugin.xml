@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Hudson"
+            id="dk.contix.eclipse.hudson">
+      </category>
+      <view
+            name="Hudson"
+            icon="icons/hudson.png"
+            category="dk.contix.eclipse.hudson"
+            class="org.hudsonci.eclipse.core.ui.HudsonView"
+            id="dk.contix.eclipse.hudson.views.HudsonView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.TaskList"
+               relationship="stack"
+               id="dk.contix.eclipse.hudson.views.HudsonView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="org.hudsonci.eclipse.core.preference.HudsonPreferencesPage"
+            id="org.hudsonci.eclipse.hudson.preference"
+            name="Hudson CI"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="org.hudsonci.eclipse.core.preference.PreferenceInitializer"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="org.hudsonci.eclipse.core.ui.HudsonBrowser"
+            default="false"
+            icon="icons/hudson.png"
+            id="org.hudsonci.eclipse.core.browser"
+            name="Browser"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <wizard
+            category="org.hudsonci.eclipse.core"
+            class="org.hudsonci.eclipse.core.ui.wizards.NewHudsonJobWizard"
+            icon="icons/new-package.gif"
+            id="org.hudsonci.eclipse.core.wizards.NewHudsonJob"
+            name="Create New Job">
+      </wizard>
+      <category
+            id="org.hudsonci.eclipse.core"
+            name="Hudson">
+      </category>
+   </extension>
+   <extension
+         point="org.maven.ide.eclipse.m2menu">
+      <factory
+            class="org.hudsonci.eclipse.maven.actions.NewJobMavenMenuCreator">
+      </factory>
+   </extension>
+
+</plugin>

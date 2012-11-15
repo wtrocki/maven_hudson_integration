@@ -1,0 +1,7 @@
+Utworzenie prawid³owego configa.
+
+Sprawdzenie czy plugin ma nature mavena.  
+<ciManagement>
+    <system></system>
+    <url></url>
+</ciManagement>
